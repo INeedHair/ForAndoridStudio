@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     RadioGroup mainRg;
     //声明四个按钮对应的Fragment对象
+    //测试一下修改后的g能不能提交到github
     Fragment starFrag,luckFrag,partnerFrag,meFrag;
     private FragmentManager manager;
 
