@@ -13,7 +13,7 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 
 import com.example.constellation.R;
-import com.example.constellation.bean.StarInfoBean;
+import com.example.constellation.bean.StarBean;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class StarFragment extends Fragment {
     ViewPager starVp;
     GridView starGv;
     LinearLayout pointLayout;
-    private List<StarInfoBean.StarinfoBean> mDatas;
+    private List<StarBean.StarinfoBean> mDatas;
     private StarBaseAdapter starBaseAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,12 +37,12 @@ public class StarFragment extends Fragment {
 
         //获取主界面传来的数据
         Bundle bundle=getArguments();
-        StarInfoBean infoBean= (StarInfoBean) bundle.getSerializable("info");
+        StarBean infoBean= (StarBean) bundle.getSerializable("info");
         mDatas = infoBean.getStarinfo();
 
         //创建适配器
-       starBaseAdapter = new StarBaseAdapter(getContext(), mDatas);
-       starGv.setAdapter(starBaseAdapter);
+        starBaseAdapter = new StarBaseAdapter(getContext(), mDatas);
+        starGv.setAdapter(starBaseAdapter);
 
         return view;
     }

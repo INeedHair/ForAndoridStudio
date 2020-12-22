@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.RadioGroup;
 
-import com.example.constellation.bean.StarInfoBean;
+import com.example.constellation.bean.StarBean;
 import com.example.constellation.luckfrag.LuckFragment;
 import com.example.constellation.mefrag.MeFragment;
 import com.example.constellation.parnterfrag.PartnerFragment;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         mainRg.setOnCheckedChangeListener(this);
 
         //加载星座相关数据 /assets/xzcontent/xzcontent.json
-        StarInfoBean infoBean = loadData();
+        StarBean infoBean = loadData();
         Bundle bundle=new Bundle();
         bundle.putSerializable("info",infoBean);
 
@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     //读取xzcontent.json
-    private StarInfoBean loadData() {
+    private StarBean loadData() {
         String json = AssetsUtils.getJsonFromAssets(this, "xzcontent/xzcontent.json");
         Gson gson = new Gson();
-        StarInfoBean infoBean = gson.fromJson(json, StarInfoBean.class);
+        StarBean infoBean = gson.fromJson(json, StarBean.class);
         AssetsUtils.saveBitmapFromAssets(this,infoBean);
         return infoBean;
     }
