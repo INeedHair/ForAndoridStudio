@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StarFragment"
-    android:background="@color/purple">
+    tools:context=".starfrag.StarFragment"
+    android:background="@color/bgyellow">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/starfrag_vp"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"/>
+
+    <LinearLayout
+        android:id="@+id/starfrag_layout"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:orientation="horizontal"
+        android:layout_alignBottom="@id/starfrag_vp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"/>
+    <GridView
+        android:id="@+id/starfrag_gv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:numColumns="4"
+        android:layout_below="@id/starfrag_vp"
+        android:layout_marginTop="100dp"/>
 
-</FrameLayout>
+</RelativeLayout>

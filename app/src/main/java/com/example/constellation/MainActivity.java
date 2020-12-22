@@ -8,10 +8,17 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.RadioGroup;
 
+import com.example.constellation.bean.StarInfoBean;
+import com.example.constellation.luckfrag.LuckFragment;
+import com.example.constellation.mefrag.MeFragment;
+import com.example.constellation.parnterfrag.PartnerFragment;
+import com.example.constellation.starfrag.StarFragment;
+import com.example.constellation.utils.AssetsUtils;
+import com.google.gson.Gson;
+
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     RadioGroup mainRg;
     //声明四个按钮对应的Fragment对象
-    //测试一下修改后的g能不能提交到github
     Fragment starFrag,luckFrag,partnerFrag,meFrag;
     private FragmentManager manager;
 
@@ -22,13 +29,32 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         mainRg=findViewById(R.id.main_radioButton);
         //设置点击事件的监听，点击了那个单选按钮
         mainRg.setOnCheckedChangeListener(this);
+
+        //加载星座相关数据 /assets/xzcontent/xzcontent.json
+        StarInfoBean infoBean = loadData();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("info",infoBean);
+
         //创建碎片对象
         starFrag=new StarFragment();
+        starFrag.setArguments(bundle);
         partnerFrag=new PartnerFragment();
+        partnerFrag.setArguments(bundle);
         luckFrag=new LuckFragment();
+        luckFrag.setArguments(bundle);
         meFrag=new MeFragment();
+        meFrag.setArguments(bundle);
         //加载到要替换的布局里，replace          add/hide.show
         addFragmentPage();
+    }
+
+    //读取xzcontent.json
+    private StarInfoBean loadData() {
+        String json = AssetsUtils.getJsonFromAssets(this, "xzcontent/xzcontent.json");
+        Gson gson = new Gson();
+        StarInfoBean infoBean = gson.fromJson(json, StarInfoBean.class);
+        AssetsUtils.saveBitmapFromAssets(this,infoBean);
+        return infoBean;
     }
 
     /*
