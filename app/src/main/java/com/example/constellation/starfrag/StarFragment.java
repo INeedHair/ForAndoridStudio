@@ -2,6 +2,7 @@ package com.example.constellation.starfrag;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -82,9 +84,24 @@ public class StarFragment extends Fragment {
         initPager();
         //设置监听
         setVPListener();
+        //设置gridview的监听事件
+        setGVListener();
         //设置滑动的handler,5秒钟切换一次图片
         handler.sendEmptyMessageDelayed(1,5000);
         return view;
+    }
+
+    //设置gridview的监听事件
+    private void setGVListener() {
+        starGv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                StarBean.StarinfoBean bean = mDatas.get(position);
+                Intent intent = new Intent(getContext(), StarAnalysisActivity.class);
+                intent.putExtra("star",bean);
+                startActivity(intent);
+            }
+        });
     }
 
 
