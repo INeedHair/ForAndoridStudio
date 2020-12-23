@@ -4,8 +4,13 @@
     <string name="label_parnter">配对</string>
     <string name="label_luck">运势</string>
     <string name="label_me">我的</string>
+    <string name="man">男生 :</string>
+    <string name="woman">女生 :</string>
+    <string name="parnter_info">分别选择您的星座和对方的星座点击配对分析即可。</string>
+    <string name="parnter_btn_analysis">开始配对分析</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title">星梦缘</string>
+
 </resources>
