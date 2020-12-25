@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/statusBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".luckfrag.LuckAnalysisActivity"></activity>
+        <activity android:name=".home.WelcomeActivity"></activity>
+        <activity android:name=".luckfrag.LuckAnalysisActivity" />
         <activity android:name=".parnterfrag.ParnterAnalysisActivity" />
         <activity android:name=".starfrag.StarAnalysisActivity" />
         <activity android:name=".MainActivity">
